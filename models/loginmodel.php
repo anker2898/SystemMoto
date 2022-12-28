@@ -7,7 +7,7 @@ class LoginModel extends Model {
     }
 
     public function authentication(string $user, string $pass) {
-        $sql = "CALL SP_AUTH(:P_SUSER, :P_SPASSWORD) ";
+        $sql = "CALL SP_AUTH(:P_SUSER, :P_SPASSWORD)";
         $stm = $this->db->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
         $stm->bindValue(':P_SUSER', $user, PDO::PARAM_STR);
         $stm->bindValue(':P_SPASSWORD', $pass, PDO::PARAM_STR);

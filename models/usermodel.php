@@ -34,4 +34,28 @@ class UserModel extends Model {
         $stm->execute();
     }
     
+    public function save($data) {
+        $sql = "CALL SP_INS_USER(:P_SDOCUMENT, :P_SNOMBRE, :P_SAPELLIDO_PAT, :P_SAPELLIDO_MAT, :P_SEMAIL, :P_SNUMBER, :P_NSTATUS, :P_SUSER, :P_BPASSWORD_RESET)";
+        $stm = $this->db->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $stm->bindValue(':P_SDOCUMENT', $data["DOCUMENTO"], PDO::PARAM_STR);
+        $stm->bindValue(':P_SNOMBRE', $data["NOMBRE"], PDO::PARAM_STR);
+        $stm->bindValue(':P_SAPELLIDO_PAT', $data["APELLIDO_PAT"], PDO::PARAM_STR);
+        $stm->bindValue(':P_SAPELLIDO_MAT', $data["APELLIDO_MAT"], PDO::PARAM_STR);
+        $stm->bindValue(':P_SEMAIL', $data["EMAIL"], PDO::PARAM_STR);
+        $stm->bindValue(':P_SNUMBER', $data["NUMERO"], PDO::PARAM_STR);
+        $stm->bindValue(':P_NSTATUS', $data["STATUS"], PDO::PARAM_INT);
+        $stm->bindValue(':P_SUSER', $data["USER"], PDO::PARAM_STR);
+        $stm->bindValue(':P_BPASSWORD_RESET', $data["RESET"], PDO::PARAM_INT);
+        $stm->execute();
+    }    
+    
+    public function getById($document) {
+        $sql = "CALL SP_SEL_USER_DNI(:P_SDOCUMENT)";
+        $stm = $this->db->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $stm->bindValue(':P_SDOCUMENT', $document, PDO::PARAM_STR);
+        $stm->execute();
+        $resultDb = $stm->fetchAll();
+        $result = sizeof($resultDb) >= 1? $resultDb[0]: [];
+        return $result;
+    }
 }
