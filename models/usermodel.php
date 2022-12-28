@@ -58,4 +58,11 @@ class UserModel extends Model {
         $result = sizeof($resultDb) >= 1? $resultDb[0]: [];
         return $result;
     }
+    
+    public function getRoles() {
+        $sql = "CALL SP_SEL_ROLES()";
+        $stm = $this->db->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        $stm->execute();
+        return $stm->fetchAll();
+    }
 }

@@ -18,12 +18,14 @@ class User extends Controller {
     }
 
     public function new() {
+        $this->view->roles = $this->model->getRoles();
         $this->view->render('user/form');
     }
 
     public function edit() {
         $document = $_GET["id"];
         $this->view->data = $this->model->getById($document);
+        $this->view->roles = $this->model->getRoles();
         $this->view->render('user/form');
     }
 

@@ -116,7 +116,7 @@
 
         <label for="">Roles</label>
         <div class="row">
-            <?php foreach ($roles as $rol) { ?>
+            <?php foreach ($this->roles as $rol) { ?>
                 <div class="col-6">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
