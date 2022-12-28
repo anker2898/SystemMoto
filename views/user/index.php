@@ -1,8 +1,9 @@
 <?php require 'views/shared/header.php'; ?>
 <div class="container">
     <div class="row">
-        <div class="col-4">
-            <h1>Usuarios</h1>
+        <div class="col-12">
+            <h1 class="text-center">Usuarios</h1>
+        </div><div class="col-4">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="inputGroup-sizing-default">Buscar</span>
