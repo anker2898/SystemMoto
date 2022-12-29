@@ -7,7 +7,7 @@ class LoginModel extends Model {
     }
 
     public function authentication(string $user, string $pass) {
-        $sql = "CALL SP_AUTH(:P_SUSER, :P_SPASSWORD) ";
+        $sql = "CALL SP_AUTH(:P_SUSER, :P_SPASSWORD)";
         $stm = $this->db->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
         $stm->bindValue(':P_SUSER', $user, PDO::PARAM_STR);
         $stm->bindValue(':P_SPASSWORD', $pass, PDO::PARAM_STR);
@@ -25,10 +25,15 @@ class LoginModel extends Model {
             $result["RESET"] = $firstRow["RESET"] == 1;
 
             //Listar privilegios
-            foreach ($resultDb as $row) {
+            $sql = "CALL SP_AUTH_ROLES(:P_SUSER, :P_SPASSWORD)";
+            $stm = $this->db->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+            $stm->bindValue(':P_SUSER', $user, PDO::PARAM_STR);
+            $stm->bindValue(':P_SPASSWORD', $pass, PDO::PARAM_STR);
+            $stm->execute();
+            $rolesDB = $stm->fetchAll();
+            foreach ($rolesDB as $row) {
                 $path = array(
                     "path" => $row["URL"],
-                    "img" => $row["IMAGEN"],
                     "label" => $row["LABEL"],
                 );
                 array_push($result["PRIVILEGIOS"], $path);
@@ -36,7 +41,6 @@ class LoginModel extends Model {
             
             $_SESSION['login'] = true;
             $_SESSION['user'] = $result;
-            
         }
         return $result;
     }

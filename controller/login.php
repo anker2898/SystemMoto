@@ -27,9 +27,7 @@ class Login extends Controller {
         } else {
             $this->view->mensaje = true;
             $this->render();
-        }
-
-        print_r($_SESSION['user']);
+        }   
     }
 
     public function reset() {

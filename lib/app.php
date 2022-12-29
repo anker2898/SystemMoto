@@ -17,11 +17,28 @@ class App {
             $controller->render();
             return false;
         }
-
         $url[0] = $_SESSION['login'] ? $url[0] : 'login';
         $path = 'controller/' . $url[0] . '.php';
 
         if (file_exists($path)) {
+
+            if (isset($_SESSION['user']) && $url[0] != "login" && $url[0] != "main") {
+                $flagPermission = true;
+                foreach ($_SESSION['user']['PRIVILEGIOS'] as $pathPermission) {
+                    $route = str_replace('/', '', $pathPermission['path']);
+                    if ($route == $url[0]) {
+                        $flagPermission = false;
+                        break;
+                    }
+                }
+
+                if ($flagPermission) {
+                    require_once 'controller/error.php';
+                    $controller = new ErrorResource();
+                    return false;
+                }
+            }
+
             require_once $path;
             $controller = new $url[0];
             $controller->loadModel($url[0]);

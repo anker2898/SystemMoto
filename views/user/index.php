@@ -1,8 +1,9 @@
 <?php require 'views/shared/header.php'; ?>
 <div class="container">
     <div class="row">
-        <div class="col-4">
-            <h1>Usuarios</h1>
+        <div class="col-12">
+            <h1 class="text-center">Usuarios</h1>
+        </div><div class="col-4">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="inputGroup-sizing-default">Buscar</span>
@@ -39,22 +40,22 @@
                                     <?php if ($row[$i] == 1) { ?>
                                         <span class="badge badge-success">Habilitado</span>
                                     <?php } else { ?><span class="badge badge-danger">Deshabilitado</span>
-                                <?php } ?>
+                                    <?php } ?>
                                 </td>
-        <?php } else { ?>
+                            <?php } else { ?>
                                 <td><?php echo ($row[$i]) ?>
                                 </td>
                             <?php } ?>
 
-    <?php } ?>
+                        <?php } ?>
                         <td>
                             <a href="<?php echo constant("URL") ?>/user/edit?id=<?php echo ($row[5]) ?>" class="btn btn-secondary">Editar</a>
                             <a href="<?php echo constant("URL") ?>/user/delete?id=<?php echo ($row[5]) ?>" class="btn btn-danger">Eliminar</a>
                         </td>
                     </tr>
-<?php } ?>
+                <?php } ?>
                 <tr class='noSearch hide'>
-                    <td colspan="<?php //echo (count($header))  ?>"></td>
+                    <td colspan="<?php //echo (count($header))   ?>"></td>
                 </tr>
             </tbody>
         </div>
