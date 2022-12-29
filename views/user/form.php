@@ -2,7 +2,7 @@
 <form action="<?php echo constant("URL") ?>/user/guardar" method="POST">
     <div class="container">
         <div class="row">
-            <div class="col-4">
+            <div class="col-12 text-center">
                 <h1>Usuarios</h1>
             </div>
         </div>
@@ -121,7 +121,8 @@
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
-                                <input type="checkbox" aria-label="Checkbox for following text input" value="<?php echo ($rol[0]) ?>" name="<?php echo ($rol[1]) ?>">
+                                <input type="checkbox" aria-label="Checkbox for following text input" 
+                                       value="true" name="<?php echo ($rol[1]) ?>" <?php echo $this->dataRoles[$rol[1]] == 1? "checked": "" ?>>
                             </div>
                         </div>
                         <input type=" text" class="form-control" aria-label="Text input with checkbox" value="<?php echo ($rol[1]) ?>" disabled>

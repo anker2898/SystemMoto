@@ -22,7 +22,7 @@ class App {
 
         if (file_exists($path)) {
 
-            if (isset($_SESSION['user']) && $url[0] != "login") {
+            if (isset($_SESSION['user']) && $url[0] != "login" && $url[0] != "main") {
                 $flagPermission = true;
                 foreach ($_SESSION['user']['PRIVILEGIOS'] as $pathPermission) {
                     $route = str_replace('/', '', $pathPermission['path']);

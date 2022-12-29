@@ -6,6 +6,7 @@ class User extends Controller {
         parent::__construct();
         $this->view->rows = [];
         $this->view->data = null;
+        $this->view->dataRoles = [];
         $this->view->roles = [];
         $this->view->message = "";
         $this->view->messageHeader = "";
@@ -25,6 +26,7 @@ class User extends Controller {
     public function edit() {
         $document = $_GET["id"];
         $this->view->data = $this->model->getById($document);
+        $this->view->dataRoles = $this->model->getRolesById($document);
         $this->view->roles = $this->model->getRoles();
         $this->view->render('user/form');
     }
@@ -40,8 +42,19 @@ class User extends Controller {
             "STATUS" => isset($_POST["activo"]) ? $_POST["activo"] : 0,
             "RESET" => isset($_POST["reset"]) ? $_POST["reset"] : 0);
         $this->view->url = "/user";
+
+        //ASIGNACIÓN DE ROLES
+        $rolesDB = $this->model->getRoles();
+        $dataRoles = array();
+
+        foreach ($rolesDB as $rol) {
+            $rolSelected = array($rol["LABEL"] => $_POST[$rol["LABEL"]] ? "1" : "0");
+            $dataRoles = array_merge($dataRoles, $rolSelected);
+        }
+
         try {
             $this->model->save($data);
+            $this->model->saveRole($_POST["documento"], $dataRoles);
             $this->view->messageHeader = "Operación exitósa";
             $this->view->message = "La operación se realizó con exito.";
         } catch (Exception $ex) {

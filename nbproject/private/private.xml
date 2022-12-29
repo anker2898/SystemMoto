@@ -3,12 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/home/anker/NetBeansProjects/soul/lib/app.php</file>
+            <file>file:/home/anker/NetBeansProjects/soul/views/shared/message.php</file>
+            <file>file:/home/anker/NetBeansProjects/soul/controller/chofer.php</file>
+            <file>file:/home/anker/NetBeansProjects/soul/views/user/index.php</file>
+            <file>file:/home/anker/NetBeansProjects/soul/views/shared/footer.php</file>
+            <file>file:/home/anker/NetBeansProjects/soul/controller/login.php</file>
+            <file>file:/home/anker/NetBeansProjects/soul/views/user/delete.php</file>
+            <file>file:/home/anker/NetBeansProjects/soul/views/chofer/index.php</file>
+            <file>file:/home/anker/NetBeansProjects/soul/controller/main.php</file>
+            <file>file:/home/anker/NetBeansProjects/soul/views/error/index.php</file>
             <file>file:/home/anker/NetBeansProjects/soul/models/usermodel.php</file>
             <file>file:/home/anker/NetBeansProjects/soul/views/login/index.php</file>
-            <file>file:/home/anker/NetBeansProjects/soul/views/user/index.php</file>
             <file>file:/home/anker/NetBeansProjects/soul/views/login/reset.php</file>
+            <file>file:/home/anker/NetBeansProjects/soul/views/shared/header.php</file>
             <file>file:/home/anker/NetBeansProjects/soul/views/user/form.php</file>
-            <file>file:/home/anker/NetBeansProjects/soul/views/user/delete.php</file>
+            <file>file:/home/anker/NetBeansProjects/soul/models/loginmodel.php</file>
             <file>file:/home/anker/NetBeansProjects/soul/controller/user.php</file>
         </group>
     </open-files>
