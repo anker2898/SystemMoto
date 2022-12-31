@@ -55,7 +55,7 @@
                     </tr>
                 <?php } ?>
                 <tr class='noSearch hide'>
-                    <td colspan="<?php //echo (count($header))   ?>"></td>
+                    <td colspan="7"></td>
                 </tr>
             </tbody>
         </div>

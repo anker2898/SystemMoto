@@ -32,8 +32,8 @@ class User extends Controller {
     }
 
     public function guardar() {
-        $data = array("APELLIDO_PAT" => $_POST["apMaterno"],
-            "APELLIDO_MAT" => $_POST["apPaterno"],
+        $data = array("APELLIDO_PAT" => $_POST["apPaterno"],
+            "APELLIDO_MAT" => $_POST["apMaterno"],
             "NOMBRE" => $_POST["nombre"],
             "DOCUMENTO" => $_POST["documento"],
             "EMAIL" => $_POST["correo"],
